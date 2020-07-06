@@ -9,11 +9,14 @@ public class App {
         ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 
         CustomerService customerService = context.getBean(CustomerService.class);
-        customerService.doSomething();
+//        customerService.doSomething();
+//
+//        System.out.println("\n");
+//
+//        AccountService accountService = context.getBean(AccountService.class);
+//        accountService.deposit(1000.00);
 
-        System.out.println("\n");
-
-        AccountService accountService = context.getBean(AccountService.class);
-        accountService.deposit(1000.00);
+        String returnName = customerService.getName();
+        System.out.println(returnName);
     }
 }

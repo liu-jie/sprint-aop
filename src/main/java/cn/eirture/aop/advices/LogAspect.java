@@ -2,6 +2,7 @@ package cn.eirture.aop.advices;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -21,5 +22,10 @@ public class LogAspect {
     @After("execution(* cn.eirture.aop.advices.CustomerService.*(..))")
     public void logAfter(JoinPoint joinPoint) {
         System.out.println("Log after executing---");
+    }
+
+    @AfterReturning(pointcut = "execution(* *(..))", returning = "myname")
+    public void logAfterReturning(String myname) {
+        System.out.println("Return value: " + myname);
     }
 }
