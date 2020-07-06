@@ -12,4 +12,8 @@ public class CustomerServiceImpl implements CustomerService {
         return "Jie Liu";
     }
 
+    public String getAge() {
+        throw new MyException("my exception...");
+    }
+
 }
