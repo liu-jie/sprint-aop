@@ -16,4 +16,9 @@ public class CustomerServiceImpl implements CustomerService {
         throw new MyException("my exception...");
     }
 
+    public double calculatePayment(double rate, int hours) {
+        System.out.println("Rate: " + rate + ", hours: " + hours);
+        return rate * hours;
+    }
+
 }

@@ -1,6 +1,7 @@
 package cn.eirture.aop.advices;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
@@ -31,4 +32,22 @@ public class LogAspect {
         System.out.println(joinPoint.getSignature().getName() + " throw exception: " + e.getMessage());
     }
 
+    @Around("execution(* cn.eirture.aop.advices.CustomerService.calculatePayment(double, int))")
+    public Object aroundAdvice(ProceedingJoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        System.out.println("Args in Around Advices: " + args[0] + ", " + args[1]);
+
+        args[0] = 30;
+        args[1] = 9;
+
+        Object result = null;
+        try {
+//            result = joinPoint.proceed(); // call the actual method
+            result = joinPoint.proceed(args);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        System.out.println("Result in Around Advice: " + result);
+        return 60.0;
+    }
 }

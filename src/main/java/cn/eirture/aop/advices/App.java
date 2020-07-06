@@ -18,7 +18,9 @@ public class App {
 
 //        String returnName = customerService.getName();
 //        System.out.println(returnName);
+//        customerService.getAge();
 
-        customerService.getAge();
+        double payment = customerService.calculatePayment(20, 5);
+        System.out.println("payment: " + payment);
     }
 }
